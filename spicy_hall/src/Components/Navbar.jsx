@@ -1,9 +1,109 @@
 import React from 'react'
+import {
+  Box,
+  Flex,
+  Avatar,
+  HStack,
+  Link,
+  IconButton,
+  Button,
+  Menu,
+  Image,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  useDisclosure,
+  useColorModeValue,
+  Stack,
+} from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import logo from "../Images/logo.png"
+
+const Links = ['Dashboard', 'Projects', 'Team'];
+
+const NavLink = ({ children }) => (
+  <Link
+    px={2}
+    py={1}
+    rounded={'md'}
+    _hover={{
+      color: useColorModeValue('red.400', 'red.400'),
+    }}
+    borderBottom={"1px solid white"}
+    href={'#'}>
+    {children}
+  </Link>
+);
 
 const Navbar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <div>
-      
+      <Box bg={useColorModeValue('gray.700', 'gray.700')} color={"white"} px={4}>
+        <Flex h={20} alignItems={'center'} justifyContent={'space-between'}>
+          <IconButton
+            size={'md'}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label={'Open Menu'}
+            display={{ md: 'none' }}
+            onClick={isOpen ? onClose : onOpen}
+          />
+          <HStack spacing={10} alignItems={'center'}>
+            <Box w={20} ml={10}>
+              <img src={logo} alt="" />
+            </Box>
+            <HStack
+              as={'nav'}
+              spacing={12}
+              display={{ base: 'none', md: 'flex' }}>
+              {Links.map((link) => (
+                <NavLink key={link}>{link}</NavLink>
+              ))}
+            </HStack>
+          </HStack>
+          <Flex alignItems={'center'} mr={3}>
+            <Menu>
+              <MenuButton
+                as={Button}
+                border={"3px solid white"}
+                p={1}
+                rounded={'full'}
+                variant={'link'}
+                cursor={'pointer'}
+                _hover={{
+                  border: "3px solid #f76363"
+                }}
+                minW={0}>
+                <Avatar
+                  size={'sm'}
+                  src={
+                    'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                  }
+                />
+              </MenuButton>
+              <MenuList>
+                <MenuItem>Link 1</MenuItem>
+                <MenuItem>Link 2</MenuItem>
+                <MenuDivider />
+                <MenuItem>Link 3</MenuItem>
+              </MenuList>
+            </Menu>
+          </Flex>
+        </Flex>
+
+        {isOpen ? (
+          <Box pb={4} display={{ md: 'none' }} >
+            <Stack as={'nav'} spacing={4}>
+              {Links.map((link) => (
+                <NavLink key={link}>{link}</NavLink>
+              ))}
+            </Stack>
+          </Box>
+        ) : null}
+      </Box>
+
+      <Box p={4}>Main Content Here</Box>
     </div>
   )
 }

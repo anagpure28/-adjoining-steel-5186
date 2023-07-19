@@ -3,7 +3,8 @@ import React from 'react'
 const HomePage = () => {
   return (
     <div>
-      its homepage
+      <div className="home-main-container">
+      </div>
     </div>
   )
 }
