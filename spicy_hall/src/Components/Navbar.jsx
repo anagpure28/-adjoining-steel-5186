@@ -17,9 +17,9 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import logo from "../Images/logo.png"
+import logo from "../Images/Home/logo.png"
 
-const Links = ['Dashboard', 'Projects', 'Team'];
+const Links = ['Home', 'Recipes', "About" ,'Contact'];
 
 const NavLink = ({ children }) => (
   <Link
@@ -93,7 +93,7 @@ const Navbar = () => {
 
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }} >
-            <Stack as={'nav'} spacing={4} >
+            <Stack as={'nav'} spacing={4}>
               {Links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>
               ))}
