@@ -17,9 +17,9 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-// import logo from ".../Images/logo/cwNem111Logo.png"
+import logo from "../Images/Home/logo.png"
 
-const Links = ['Home', 'recipes', "About" ,'Contact'];
+const Links = ['Home', 'Recipes', "About" ,'Contact'];
 
 const NavLink = ({ children }) => (
   <Link
@@ -30,10 +30,9 @@ const NavLink = ({ children }) => (
       color: useColorModeValue('red.400', 'red.400'),
     }}
     borderBottom={"1px solid white"}
-    href={children}>
+    href={'#'}>
     {children}
   </Link>
-  
 );
 
 const Navbar = () => {
@@ -51,7 +50,7 @@ const Navbar = () => {
           />
           <HStack spacing={10} alignItems={'center'}>
             <Box w={"65px"} ml={10}>
-              <img src={"https://imgtr.ee/image/1bzTv"} alt="" />
+              <img src={logo} alt="" />
             </Box>
             <HStack
               as={'nav'}
