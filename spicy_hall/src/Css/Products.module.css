@@ -1,0 +1,35 @@
+
+.FullProductsPage{
+    display: grid;
+    padding-top: 50px;
+    grid-template-columns: 12% 88%;
+    background-image: url("../Images/bg/5.jpeg");
+    height: 100%;
+position: sticky;
+background-size:cover;
+background-repeat: no-repeat;
+}
+.ProductsPage{
+
+
+top: 0;
+    color: white;
+    font-weight: 300;
+    width: 100%;
+
+    /* background-color: #171819; */
+}
+.PostsCardContainer{
+    width: 100%;
+    margin: auto;
+    border: 1px dotted #e4c590c2;
+   
+   
+
+}
+.ProductsPost{
+    /* border: 1px solid #e4c590c2; */
+    margin: auto;
+      width:60%;
+     
+    }

@@ -1,0 +1,22 @@
+
+.SingleProductPage{
+    background-image: url("../Images/bg/image1.png");
+height: 100vh;
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding-top: 30px;
+}
+
+
+.SingleProduct{
+    width: 80%;
+margin: auto;
+
+    border: 1px solid red;
+    color: #e4c590;
+    display: flex;
+justify-content: space-between;
+}
+.SingleDescriptionConatiner>h1{
+font-size: 3.5rem;
+}

@@ -1,16 +1,22 @@
 
 /* 
 font-family: 'Aboreto', cursive;
-font-family: 'Cormorant Garamond', serif;
+font-family: 'Cinzel', serif;
+//font-family: 'Cormorant Garamond', serif;
 font-family: 'Montserrat', sans-serif;
 font-family: 'Mulish', sans-serif;
 font-family: 'Seaweed Script', cursive;
 font-family: 'Srisakdi', cursive;
-font-family: 'Ysabeau', sans-serif; */
 
+
+//font-family: 'Tangerine', cursive;
+font-family: 'Ysabeau', sans-serif; */
+*{
+
+}
 
 .App {
-font-family: 'Cormorant Garamond', serif ;
+font-family: 'Cormorant Garamond', serif;
   text-align: center;
 }
 
