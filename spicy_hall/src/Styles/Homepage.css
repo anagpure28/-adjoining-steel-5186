@@ -24,6 +24,7 @@
     border-radius: 6px;
     color: black;
     font-size: 1.1rem;
+    font-weight: 700;
     background-color: #eabe72;
 }
 .home-div1 > p{
@@ -405,7 +406,7 @@
     .home-b1{
         width: 40%;
         height: 50px;
-        font-size: 1.1rem;
+        font-size: 1.4rem;
     }
     .home-div2 > img{
         width: 80%;

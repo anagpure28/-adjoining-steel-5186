@@ -23,7 +23,7 @@ const HomePage = () => {
           <div className="home-div1">
             <RxHamburgerMenu style={{ fontSize: "25px", cursor: "pointer" }} />
             <p>My Recipes</p>
-            <button className="home-b1">Find your recipe</button>
+            <button className="home-b1">Find your Recipe</button>
           </div>
           <div className="home-div2">
             <p>DELIGHTFUL - EXPERIENCE</p>
