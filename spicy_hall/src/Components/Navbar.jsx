@@ -4,7 +4,6 @@ import {
   Flex,
   Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   Menu,
@@ -18,14 +17,20 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import logo from "../Images/Home/logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const links = [
   { path: "/", title: "Home" },
   { path: "/recipes", title: "Recipes" },
   { path: "/about", title: "About" },
-  { path: "/contact", title: "Contact" },
+  { path: "/contact", title: "Contact" }
 ];
+
+const links2 = [
+  { path: "/register", title: "Signup / Register" },
+  { path: "/adnin", title: "Admin Login" },
+  { path: "/myrecipes", title: "My Recipes" }
+]
 
 // const NavLink = ({ children }) => (
 //   <Link
@@ -77,7 +82,7 @@ const Navbar = () => {
         backgroundColor: "black",
       }}
     >
-      <Box bg={useColorModeValue("transparent")} color={"#ffca6f;"} px={4}>
+      <Box bg={useColorModeValue("transparent")} color={"#ffca6f"} px={4}>
         <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -122,15 +127,15 @@ const Navbar = () => {
                   <Avatar
                     size={"sm"}
                     src={
-                      "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+                      "https://e0.pxfuel.com/wallpapers/266/672/desktop-wallpaper-tom-cruise-background-black-closeup-face-men-face.jpg"
                     }
                   />
                 </div>
               </MenuButton>
               <MenuList bg={"blackAlpha.800"}>
-                <MenuItem bg={"gray.700"}>Signup / Register</MenuItem>
+                <Link to={"/register"}><MenuItem bg={"gray.700"}>Signup / Register</MenuItem></Link>
                 <MenuDivider />
-                <MenuItem bg={"gray.700"}>Admin Login</MenuItem>
+                <Link to={"/admin"}><MenuItem bg={"gray.700"}>Admin Login</MenuItem></Link>
               </MenuList>
             </Menu>
           </Flex>
@@ -139,8 +144,8 @@ const Navbar = () => {
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-              {links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+              {links2.map(({path, title}) => (
+                <NavLink key={path} to={path}>{title}</NavLink>
               ))}
             </Stack>
           </Box>
