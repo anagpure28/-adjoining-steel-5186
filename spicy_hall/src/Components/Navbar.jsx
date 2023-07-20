@@ -83,7 +83,7 @@ const Navbar = () => {
                 /></div>
               </MenuButton>
               <MenuList bg={'blackAlpha.800'}>
-                <MenuItem bg={"gray.700"}>User Login</MenuItem>
+                <MenuItem bg={"gray.700"}>Signup / Register</MenuItem>
                 <MenuDivider />
                 <MenuItem bg={"gray.700"}>Admin Login</MenuItem>
               </MenuList>
