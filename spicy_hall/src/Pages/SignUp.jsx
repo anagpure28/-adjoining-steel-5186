@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../Styles/Signup.css";
 import img4 from "../Images/Home/img4.jpg";
 import { Parallax } from "react-parallax";
@@ -11,16 +11,18 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
-    e.prevenDefault()
+    e.preventDefault()
     const payload = { username, email, gender, password };
-    fetch("localhost:3000/users/register",{
+    fetch("https://spicy-hall.onrender.com/users/register",{
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(payload)
     }).then(res=> res.json())
-    .then(res=> console.log(res))
+    .then(res=> {
+      console.log(res)
+    })
     .catch(err=> console.log(err))
     setUsername("")
     setEmail("")
@@ -32,7 +34,7 @@ const SignUp = () => {
     <div style={{ backgroundColor: "black" }}>
       <Parallax strength={400} bgImage={img4}>
         <div className="signup-main">
-          <form className="form-signup" onSubmit={handleSubmit}>
+          <form action="/login" className="form-signup" onSubmit={handleSubmit}>
             <p className="p1">Register</p>
             <hr />
             <br />
@@ -56,7 +58,6 @@ const SignUp = () => {
               <option value="">Gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
-              <option value="transgender">Transgender</option>
             </select>
             <br />
             <br />
