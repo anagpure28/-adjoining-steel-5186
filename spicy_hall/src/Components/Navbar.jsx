@@ -30,7 +30,7 @@ const NavLink = ({ children }) => (
       color: useColorModeValue('red.400', 'red.400'),
     }}
     borderBottom={"1px solid white"}
-    href={'#'}>
+    href={"#"}>
     {children}
   </Link>
 );
