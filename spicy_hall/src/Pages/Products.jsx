@@ -3,6 +3,7 @@ import styled from "styled-components";
 import styles from "../Css/Products.module.css";
 import axios from "axios";
 import PostCard from "../Components/PostCard";
+import { Link } from "react-router-dom";
 const Products = () => {
   const [posts, SetPosts] = useState([]);
 
@@ -30,6 +31,7 @@ const Products = () => {
       </div>
     <Div className={`${styles.ProductsPage}`}>
       <div className={`${styles.ProductsPost}`}>
+        <Link to={"/profile"}>
         <button id="postButton">
           {" "}
           Whats on your mind? Share your receipies now!!
@@ -39,6 +41,7 @@ const Products = () => {
             <i style={{ width: "1.5rem" }} class="fa-solid fa-share"></i>
           </div>
         </button>
+        </Link>
       </div>
       <h1 id="ProductpageTitle">Explore our new menus. . . </h1>
 
