@@ -136,7 +136,7 @@ const Navbar = () => {
               <MenuList bg={"blackAlpha.800"}>
                 <Link to={"/login"}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"90px"} color={"white"}>Login</MenuItem></Link>
                 <MenuDivider />
-                <Link to={"/my-recipes"}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"74px"} color={"white"}>My Recipes</MenuItem></Link>
+                <Link to={"/profile"}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"88px"} color={"white"}>Profile</MenuItem></Link>
                 <MenuDivider />
                 <Link to={"/savedrecipes"}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"68px"} color={"white"}>Saved Recipes</MenuItem></Link>
               </MenuList>
