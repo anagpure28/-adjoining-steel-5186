@@ -29,7 +29,8 @@ const links = [
 const links2 = [
   { path: "/register", title: "Signup / Register" },
   { path: "/adnin", title: "Admin Login" },
-  { path: "/myrecipes", title: "My Recipes" }
+  { path: "/myrecipes", title: "My Recipes" },
+  { path: "/savedrecipes", title: "Saved Recipes"}
 ]
 
 // const NavLink = ({ children }) => (
