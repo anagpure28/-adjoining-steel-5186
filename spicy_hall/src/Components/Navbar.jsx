@@ -119,7 +119,7 @@ const Navbar = () => {
                 variant={"link"}
                 cursor={"pointer"}
                 _hover={{
-                  border: "3px solid #f76363",
+                  border: "3px solid #ffca6f",
                 }}
                 minW={0}
               >
@@ -133,9 +133,9 @@ const Navbar = () => {
                 </div>
               </MenuButton>
               <MenuList bg={"blackAlpha.800"}>
-                <Link to={"/register"}><MenuItem bg={"gray.700"}>Signup / Register</MenuItem></Link>
+                <Link to={"/login"}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"90px"} color={"white"}>Login</MenuItem></Link>
                 <MenuDivider />
-                <Link to={"/admin"}><MenuItem bg={"gray.700"}>Admin Login</MenuItem></Link>
+                <Link to={""}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"74px"} color={"white"}>My Recipes</MenuItem></Link>
               </MenuList>
             </Menu>
           </Flex>

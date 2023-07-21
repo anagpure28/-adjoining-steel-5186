@@ -58,10 +58,10 @@ const Footer = () => {
             <Stack align={"flex-start"}>
             <p style={{fontSize: "22px"}}>Company</p>
               <Link href={"#"}>About</Link>
-              <Link href={"#"}>Press</Link>
               <Link href={"#"}>Careers</Link>
               <Link href={"#"}>Contact</Link>
               <Link href={"#"}>Partners</Link>
+              <Link href={"/admin"}>Admin</Link>
             </Stack>
             <Stack align={"flex-start"}>
             <p style={{fontSize: "22px"}}>Support</p>

@@ -6,6 +6,5 @@ const Admin = () => {
       
     </div>
   )
-}
-
-export default Admin
+  }
+  export default Admin

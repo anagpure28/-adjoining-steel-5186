@@ -4,7 +4,7 @@ import "../Styles/NotFound.css"
 
 export default function NotFound() {
   return (
-    <div>
+    <div style={{backgroundColor: "black"}}>
       <Box textAlign="center" py={250} px={6} className='notfound-bg'>
         <Heading
           display="inline-block"
