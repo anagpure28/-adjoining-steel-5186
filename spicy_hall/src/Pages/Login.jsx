@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import "../Styles/Signup.css";
 import img4 from "../Images/Home/img4.jpg";
 import { Parallax } from "react-parallax";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const payload = {email, password };
-    fetch("localhost:3000/users/login",{
+    fetch("https://spicy-hall.onrender.com/users/login",{
           method: "POST",
           headers: {
               "Content-Type": "application/json"
