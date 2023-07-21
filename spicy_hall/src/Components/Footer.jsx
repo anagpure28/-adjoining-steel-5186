@@ -61,7 +61,7 @@ const Footer = () => {
               <Link href={"#"}>Careers</Link>
               <Link href={"#"}>Contact</Link>
               <Link href={"#"}>Partners</Link>
-              <Link href={"/admin"}>Admin</Link>
+              <Link href={"/adminlogin"}>Admin</Link>
             </Stack>
             <Stack align={"flex-start"}>
             <p style={{fontSize: "22px"}}>Support</p>

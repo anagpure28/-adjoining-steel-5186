@@ -78,7 +78,7 @@ const Navbar = () => {
         position: "sticky",
         width: "100%",
         top: "0px",
-        borderBottom: "1px solid #ffca6f;",
+        borderBottom: "1px solid #ffca6f",
         backgroundColor: "black",
       }}
     >
@@ -135,7 +135,9 @@ const Navbar = () => {
               <MenuList bg={"blackAlpha.800"}>
                 <Link to={"/login"}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"90px"} color={"white"}>Login</MenuItem></Link>
                 <MenuDivider />
-                <Link to={""}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"74px"} color={"white"}>My Recipes</MenuItem></Link>
+                <Link to={"/my-recipes"}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"74px"} color={"white"}>My Recipes</MenuItem></Link>
+                <MenuDivider />
+                <Link to={"/savedrecipes"}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"68px"} color={"white"}>Saved Recipes</MenuItem></Link>
               </MenuList>
             </Menu>
           </Flex>
