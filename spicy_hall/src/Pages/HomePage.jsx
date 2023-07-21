@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
     <div style={{ backgroundColor: "black", color: "white" }}>
-      <Parallax strength={-400} bgImage={main}>
+      <Parallax strength={400} bgImage={main}>
         {/* Container 1 */}
         <div className="home-main-container">
           <div className="home-div1">
