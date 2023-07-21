@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const BlacklistModel = require("../model/blacklist.model");
 require("dotenv").config();
 const auth = require("../middleware/auth.middleware");
-
+const adminAuth = require("../middleware/adminAuth.middleware");
 const userRouter = express.Router();
 
 // password validation function
@@ -27,13 +27,32 @@ function passValidator(password) {
 }
 
 // only for admin checking with role
-userRouter.get("/", auth, async (rea, res) => {
+userRouter.get("/", auth, adminAuth, async (rea, res) => {
   const { userID } = req.body;
   try {
-    const user = await UserModel.findOne(userID);
-    if (user && user.role === "admin") {
+    const admin = await UserModel.findOne({ _id: userID });
+    if (admin) {
       const allUser = await UserModel.find();
       return res.status(200).json({ Users: allUser });
+    } else {
+      return res.status(404).json({ error: "Admin not Found...!!" });
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+// admin can delete the user
+userRouter.delete("/", auth, adminAuth, async (rea, res) => {
+  const { userID } = req.body;
+  try {
+    const user = await UserModel.findOne({ _id: userID });
+    if (user) {
+      const deletedUser = await UserModel.findByIdAndDelete({ _id: userID });
+      return res.status(200).json({
+        msg: "user has been deleted successfull",
+        deletedUse: deletedUser,
+      });
     } else {
       return res.status(404).json({ error: "User not Found...!!" });
     }
@@ -43,16 +62,14 @@ userRouter.get("/", auth, async (rea, res) => {
 });
 // new user registration (takes all user details from req.body)
 userRouter.post("/register", async (req, res) => {
-  const { email, password } = req.body;
-
+  const { email, password, role } = req.body;
   try {
     // checking password criteria  passValidator function
     if (!passValidator(password)) {
-      return res
-        .status(400)
-        .json({ msg: "Password does not matches criteria" });
+      return res.status(400).json({
+        msg: "Password should atleast contain 1 UpperCase letter, 1 Number and 1 Symbol",
+      });
     }
-
     // checks if user is already present with the email
     const user = await UserModel.findOne({ email });
     if (user) {
@@ -65,6 +82,7 @@ userRouter.post("/register", async (req, res) => {
             ...req.body,
             password: hash,
             isActive: true,
+            role: role ? role : "user",
           });
 
           await user.save();
@@ -89,7 +107,8 @@ userRouter.post("/login", async (req, res) => {
           // after gatting proper user details creates token for the user and send in response
           const token = jwt.sign(
             { userID: user._id, username: user.username },
-            process.env.secrate
+            process.env.secret,
+            { expiresIn: "7d" }
           );
           return res.status(200).json({ msg: "Login Successfull", token });
         } else {
@@ -113,6 +132,26 @@ userRouter.get("/logout", async (req, res) => {
     token &&
       (await BlacklistModel.updateMany({}, { $push: { blacklist: [token] } }));
     return res.status(200).json({ msg: "Logout Successfull" });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+// user can update his/her own details
+userRouter.patch("/", auth, async (rea, res) => {
+  const { userID } = req.body;
+  try {
+    const user = await UserModel.findOne({ _id: userID });
+    if (user) {
+      const updatedUser = await UserModel.findByIdAndUpdate(
+        { _id: userID },
+        req.body,
+        { new: true }
+      );
+      return res.status(200).json({ Users: updatedUser });
+    } else {
+      return res.status(404).json({ error: "User not Found...!!" });
+    }
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
