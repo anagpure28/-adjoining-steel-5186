@@ -33,7 +33,8 @@ userRouter.get("/", auth, adminAuth, async (rea, res) => {
     const admin = await UserModel.findOne({ _id: userID });
     if (admin) {
       const allUser = await UserModel.find();
-      return res.status(200).json({ Users: allUser });
+      const totalCount = await UserModel.countDocuments();
+      return res.status(200).json({ Users: allUser, totalCount });
     } else {
       return res.status(404).json({ error: "Admin not Found...!!" });
     }
