@@ -1,0 +1,9 @@
+.ProfilePage{
+    background-image: url("../Images/bg/5.jpeg");
+    height: 100vh;
+    background-size:cover;
+    background-repeat: no-repeat;
+
+    display: grid;
+
+}
