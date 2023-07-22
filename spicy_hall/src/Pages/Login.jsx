@@ -49,7 +49,6 @@ const Login = () => {
         });
     } else {
       toast({
-        // title: '',
         description: "Please fill all fields",
         status: "error",
         duration: 6000,
