@@ -3,13 +3,12 @@
 
 # ProjectName
 Spicy Hall
-[![Cw-Nem111-Logo.png](https://i.postimg.cc/yx7cPLwQ/Cw-Nem111-Logo.png)](https://postimg.cc/ygrD6y6c)
-## Description
+[![logo1.png](https://i.postimg.cc/qMPnDMV6/logo1.png)](https://postimg.cc/1fKffSzy)
 
+## About Spicy Hall
 
-Wheels is a mobile vehicle brand ,sells differenet types  Bi-cycles  nd other motor accesories with helmet, gears etc.
-
-i have tried my best to make a fully-functional clone of specializedpearl.com website that provides a minimal user experience where users can roam around and Assigned  their desired projects. 
+Spicy Hall is basically a place where all foodies can share and access popular recipes across the countries. 
+    We have tried our best to make a fully-functional clone o  social media website that provides a minimal user experience where users can roam around and engage with their loved recipes. 
 ### Quick Preview 
 
 ### Live Demo -
