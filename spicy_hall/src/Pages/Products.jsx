@@ -97,6 +97,8 @@ const Products = () => {
 export default Products;
 
 const Div = styled.div`
+width: 90%;
+margin: auto;
   #ProductpageTitle {
     width: 70%;
     justify-content: center;
@@ -183,6 +185,7 @@ const Div = styled.div`
         
             text-decoration: none;
           }
+          width: 100%;
 }
 
 
