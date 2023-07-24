@@ -16,7 +16,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import logo from "../Images/Home/logo.png";
+import logo1 from "../Images/Home/logo1.png";
 import { NavLink, Link } from "react-router-dom";
 
 const links = [
@@ -29,8 +29,8 @@ const links = [
 const links2 = [
   { path: "/register", title: "Signup / Register" },
   { path: "/adnin", title: "Admin Login" },
-  { path: "/myrecipes", title: "My Recipes" },
-  { path: "/savedrecipes", title: "Saved Recipes"}
+  { path: "/profile", title: "Profile" },
+  { path: "/myrecipes", title: "Saved Recipes"}
 ]
 
 // const NavLink = ({ children }) => (
@@ -93,8 +93,8 @@ const Navbar = () => {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={10} alignItems={"center"}>
-            <Box w={"65px"} ml={10}>
-              <img src={logo} alt="" />
+            <Box w={"75px"} ml={10}>
+              <img src={logo1} alt="" />
             </Box>
             <HStack
               as={"nav"}

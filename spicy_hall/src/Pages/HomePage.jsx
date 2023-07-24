@@ -13,8 +13,11 @@ import main from "../Images/Home/main.jpg";
 import bg1 from "../Images/Home/bg1.png";
 import bg2 from "../Images/Home/bg2.png";
 import bg3 from "../Images/Home/bg3.png";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
+  const naviagte = useNavigate();
   return (
     <div style={{ backgroundColor: "black", color: "white" }}>
       <Parallax strength={400} bgImage={main}>
@@ -23,7 +26,7 @@ const HomePage = () => {
           <div className="home-div1">
             <RxHamburgerMenu style={{ fontSize: "25px", cursor: "pointer" }} />
             <p>My Recipes</p>
-            <button className="home-b1" >Find your Recipe</button>
+            <button className="home-b1">Find your Recipe</button>
           </div>
           <div className="home-div2">
             <p>DELIGHTFUL - EXPERIENCE</p>
@@ -34,7 +37,7 @@ const HomePage = () => {
               <p>Flavors Inspired by the Seasons</p>
             </div>
             <p>Order Online & feel the joy of mouthwatering food</p>
-            <button>VIEW OUR MENU</button>
+            <button><Link to={"/recipes"}>VIEW OUR MENU</Link></button>
           </div>
           <div className="home-div4">
             <img src={sideimg} alt="" />
@@ -54,10 +57,10 @@ const HomePage = () => {
             </div>
             <div>
               <div className="variety">
-              <div style={{width: "100%"}}>
-                <p>FLAVOUR FOR ROYALITY</p>
-                <img src={line1} alt="" />
-              </div>
+                <div style={{ width: "100%" }}>
+                  <p>FLAVOUR FOR ROYALITY</p>
+                  <img src={line1} alt="" />
+                </div>
               </div>
               <p>We Offer Top Notch</p>
               <div className="variety-offer">
@@ -144,7 +147,7 @@ const HomePage = () => {
                   cottage pie, stewing cuts for one-pots like beef stroganoff
                   and fillets or sirloins for a Sunday roast.
                 </p>
-                <div> 
+                <div>
                   <button>VIEW ALL MENU</button>
                 </div>
               </div>

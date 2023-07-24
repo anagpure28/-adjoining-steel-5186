@@ -10,23 +10,14 @@ import { Box, Heading, SkeletonText, useToast } from "@chakra-ui/react";
 
 export const AdminPage = () => {
   const [data, setData] = useState([]);
+  const [update, setUpdate] = useState(false)
   console.log(data);
   const skeleton = [1, 1, 1, 1, 1, 1, 1, 1, 1];
   const toast = useToast()
   
-//   useEffect(() => {
-//     axios
-//       .get(`${url}/recipes`)
-//       .then((res) => {
-//         setData(res.data.recipes);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   }, []);
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [update]);
 
   function fetchData() {
     axios
@@ -34,6 +25,7 @@ export const AdminPage = () => {
       .then((res) => {
         // console.log(res);
         setData(res.data.recipes);
+        setUpdate((update) => !update)
       })
       .catch((err) => {
         console.log(err);
