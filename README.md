@@ -22,7 +22,7 @@ Spicy Hall is basically a place where all foodies can share and access popular r
 ### Live Demo and User Flow -
 
 #Homepage
-[![Screenshot-2023-07-24-171814.png](https://i.postimg.cc/ZnL35GCJ/Screenshot-2023-07-24-171814.png)](https://postimg.cc/kRBDjhQH)
+[![Screenshot-2023-07-24-181007.png](https://i.postimg.cc/nzjVTzgX/Screenshot-2023-07-24-181007.png)](https://postimg.cc/WFVP122V)
 
 #Single Recipe Page
 
