@@ -11,7 +11,7 @@ Spicy Hall is basically a place where all foodies can share and access popular r
     We have tried our best to make a fully-functional clone o  social media website that provides a minimal user experience where users can roam around and engage with their loved recipes. 
 ### Quick Preview 
 
-### Live Demo -
+### Live Demo and User Flow -
 
 
 
@@ -22,7 +22,7 @@ Spicy Hall is basically a place where all foodies can share and access popular r
 
 
 
-#SingleUser Page
+#Single Recipe Page
 
 
 [![Screenshot-2023-05-13-150417.png](https://i.postimg.cc/kMtW5jXN/Screenshot-2023-05-13-150417.png)](https://postimg.cc/ThfK7Jbh)
