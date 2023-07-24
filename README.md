@@ -4,7 +4,6 @@
 # ProjectName
 Spicy Hall
 [![Cw-Nem111-Logo.png](https://i.postimg.cc/yx7cPLwQ/Cw-Nem111-Logo.png)](https://postimg.cc/ygrD6y6c)
-
 ## Description
 
 
