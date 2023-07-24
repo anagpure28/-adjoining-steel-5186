@@ -1,15 +1,23 @@
 # -adjoining-steel-5186
 
 
-# ProjectName
-Spicy Hall
+# Spicy Hall
+
 [![logo1.png](https://i.postimg.cc/qMPnDMV6/logo1.png)](https://postimg.cc/1fKffSzy)
 
-## About Spicy Hall
+## About us
 
-Spicy Hall is basically a place where all foodies can share and access popular recipes across the countries. 
+Spicy Hall is basically a place where all foodies can share and access popular recipes across the country. 
     We have tried our best to make a fully-functional clone o  social media website that provides a minimal user experience where users can roam around and engage with their loved recipes. 
-### Quick Preview 
+
+
+
+### Team Details
+1. Rohit Banerjee(Team Lead)
+2. Rushikesh Humbe
+3. Anuket Nagpure
+
+
 
 ### Live Demo and User Flow -
 
