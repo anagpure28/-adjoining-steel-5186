@@ -3,26 +3,45 @@ import styled from "styled-components";
 import styles from "../Css/Products.module.css";
 import axios from "axios";
 import PostCard from "../Components/PostCard";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../Redux/products/action";
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 const Products = () => {
-  const [posts, SetPosts] = useState([]);
-
+  const posts = useSelector((store) => store.productReducer.products.recipes);
+  // console.log(posts)
+  // const [posts, SetPosts] = useState([]);
+  const [pages, setPages] = useState(1);
   const Url = "http://localhost:3000/data";
+  const [searchParams] = useSearchParams();
 
-  const getPosts = async () => {
-    try {
-      axios.get(`${Url}`).then((res) => {
-        SetPosts((pre) => [...res.data, ...res.data, ...res.data]);
-      });
-    } catch (err) {
-      console.log(err);
-    }
+  let obj = {
+    params: {
+      material: searchParams.getAll("material"),
+      // type: searchParams.getAll("type"),
+      _sort: "currentprice",
+      _order: searchParams.get("order"),
+    },
   };
-  console.log(posts);
+  const dispatch = useDispatch();
+
+
+
+
+  // const getPosts = async () => {
+  //   try {
+  //     axios.get(`${Url}`).then((res) => {
+  //       SetPosts((pre) => [...res.data, ...res.data, ...res.data]);
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // console.log(posts);
 
   useEffect(() => {
-    getPosts();
-  }, []);
+    dispatch(getProducts(obj, pages));
+  }, [searchParams]);
 
   return (
     <div className={`${styles.FullProductsPage}`}>
@@ -30,11 +49,11 @@ const Products = () => {
         SideBar
       </div>
     <Div className={`${styles.ProductsPage}`}>
-      <div className={`${styles.ProductsPost}`}>
+    <div className={`${styles.ProductsPost}`}>
         <Link to={"/profile"}>
         <button id="postButton">
           {" "}
-          Whats on your mind? Share your receipies now!!
+          Whats on your mind? 
           <div id="PostIcons">
             <i style={{ width: "1.5rem" }} class="fa-solid fa-camera"></i>
             <i style={{ width: "1.5rem" }} class="fa-solid fa-video"></i>
@@ -43,22 +62,36 @@ const Products = () => {
         </button>
         </Link>
       </div>
-      <h1 id="ProductpageTitle">Explore our new menus. . . </h1>
+      <h1 id="ProductpageTitle">Explore our menus. . . </h1>
 
       <div id="anchor">
-        <a href=""> Veg</a>
+        {/* <Link to={"/veg"}>  Veg</Link> */}
+       <a href="">Veg</a>
         <h2 style={{color:"#e4c590",fontSize:"30px"}}>|</h2>
+        {/* <Link to={"/nonveg"}> Non- Veg</Link> */}
         <a href="">Non-Veg</a>
       </div>
+      
+      {posts ? (
+  <div className={`${styles.PostsCardContainer}`}>
+    {posts.map((el) => {
+      return <PostCard key={el._id} {...el} />;
+    })}
+  </div>
+) : (
+  <CircularProgress isIndeterminate color='green.300' />
+)}
 
-      <div className={`${styles.PostsCardContainer}`}>
-        {posts.map((el) => {
-          return <PostCard {...el} />;
-        })}
-      </div>
+
+
+
+       
+
+
     </Div>
     </div>
   );
+
 };
 
 export default Products;
@@ -79,7 +112,7 @@ const Div = styled.div`
     margin: auto;
     justify-content: center;
   }
-  a {
+ a {
     color: #e4c590;
     font-size: 30px;
     text-decoration: none;
@@ -127,4 +160,49 @@ const Div = styled.div`
     padding-top: 10px;
     justify-content: space-around;
   }
+
+
+
+
+
+
+
+  @media (max-width: 1300px) {
+
+
+    #ProductpageTitle{
+            font-size: 4rem;
+        }
+        #anchor{
+            width: 40%;
+            justify-content: space-around;
+            
+        }
+        a {
+            color: #e4c590;
+        
+            text-decoration: none;
+          }
+}
+
+
+@media (max-width: 400px) {
+
+
+#ProductpageTitle{
+        font-size: 2.5rem;
+    }
+    #anchor{
+        width: 40%;
+        justify-content: space-around;
+        
+    }
+    a {
+        color: #e4c590;
+    font-size: 20px;
+        text-decoration: none;
+      }
+}
+
+
 `;

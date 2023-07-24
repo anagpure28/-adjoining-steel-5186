@@ -34,4 +34,17 @@ h1{
 
 
 
+@media (max-width: 1100px) {
+
+  .savedCardsContainer{
+
+
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+
+}
 `

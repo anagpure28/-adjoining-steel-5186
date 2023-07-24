@@ -23,7 +23,7 @@ export const AllRoutes = () => {
       <Route path='/contact' element={<Contact/>} />
       <Route path='/about' element={<About/>} />
       <Route path='/recipes' element={<Products/>} />
-      <Route path='/savedrecipes' element={<SavedPage/>} />
+      <Route path='/myrecipes' element={<SavedPage/>} />
       <Route path='/profile' element={<ProfilePage/>} />
       <Route path='/recipes/:id' element={<SingleProductsPage/>} />
       <Route path='/register' element={<SignUp/>} />

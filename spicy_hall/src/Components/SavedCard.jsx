@@ -10,7 +10,7 @@ const SavedCard = ({ images, name, card,description,id }) => {
       </div>
       <div className="CardDetails">
         <h1>{name}</h1>
-<p>{description.substring(0,150)} .... </p>
+<p>{description.substring(0,100)} .... </p>
 <div className="LikeSection">
 <Link id="Link" to={`/recipes/${id}`}>Read More...</Link>
 
@@ -37,7 +37,7 @@ max-height: 80vh;
 .Cardimage>img{
 border-radius: 15px;
 width: 100%;
-height: 350px;
+height: 250px;
 }
 .CardDetails{
   border-radius: 15px;
@@ -78,12 +78,22 @@ Link:hover{
   font-size: 16px;
 }
 .LikeSection{
-  margin-top: 3rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 
+@media (max-width: 1100px) {
+
+
+  .Cardimage>img{
+    height: 250px;
+  }
+  h1{
+    font-size: 1.5rem;
+  }
+}
 
 `;
