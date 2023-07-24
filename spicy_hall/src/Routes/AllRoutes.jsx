@@ -9,14 +9,16 @@ import SignUp from '../Pages/SignUp'
 import Login from "../Pages/Login"
 import NotFound from '../Pages/NotFound'
 import AdminLogin from '../Admin/AdminLogin'
-import { Admin } from '../Admin/Admin'
 import SavedPage from '../Pages/SavedPage'
 import ProfilePage from '../Pages/ProfilePage'
+import { AdminPage } from '../Admin/AdminPage'
+import { AdminDashboard } from '../Admin/AdminDashboard'
 
 export const AllRoutes = () => {
   return (
 
     <Routes>
+      {/* Users */}
       <Route path='/' element={<HomePage/>} />
       <Route path='/contact' element={<Contact/>} />
       <Route path='/about' element={<About/>} />
@@ -26,9 +28,12 @@ export const AllRoutes = () => {
       <Route path='/recipes/:id' element={<SingleProductsPage/>} />
       <Route path='/register' element={<SignUp/>} />
       <Route path='/login' element={<Login/>} />
-      <Route path='/adminlogin' element={<AdminLogin/>} />
-      <Route path='/admin' element={<Admin/>} />
       <Route path='*' element={<NotFound/>} />
+
+      {/* Admin */}
+      <Route path='/adminlogin' element={<AdminLogin/>} />
+      <Route path='/admin' element={<AdminPage/>} />
+      <Route path='/admindashboard' element={<AdminDashboard/>} />
     </Routes>
 
   )
