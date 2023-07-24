@@ -13,18 +13,17 @@ import main from "../Images/Home/main.jpg";
 import bg1 from "../Images/Home/bg1.png";
 import bg2 from "../Images/Home/bg2.png";
 import bg3 from "../Images/Home/bg3.png";
-import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
     <div style={{ backgroundColor: "black", color: "white" }}>
-      <Parallax strength={-400} bgImage={main}>
+      <Parallax strength={400} bgImage={main}>
         {/* Container 1 */}
         <div className="home-main-container">
           <div className="home-div1">
             <RxHamburgerMenu style={{ fontSize: "25px", cursor: "pointer" }} />
             <p>My Recipes</p>
-            <button className="home-b1" ><Link to={"/savedrecipes"}>Find your Recipe</Link></button>
+            <button className="home-b1" >Find your Recipe</button>
           </div>
           <div className="home-div2">
             <p>DELIGHTFUL - EXPERIENCE</p>

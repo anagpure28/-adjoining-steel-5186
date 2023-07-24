@@ -12,7 +12,7 @@ font-family: 'Srisakdi', cursive;
 //font-family: 'Tangerine', cursive;
 font-family: 'Ysabeau', sans-serif; */
 *{
-
+  scroll-behavior: smooth;
 }
 
 .App {

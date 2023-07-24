@@ -13,7 +13,7 @@ const auth = async (req, res, next) => {
       if (existingToken.length) {
         return res.status(400).json({ error: "Please Login Again..!!!" });
       }
-      const decoded = jwt.verify(token, process.env.secrate);
+      const decoded = jwt.verify(token, process.env.secret);
       req.body.userID = decoded.userID;
       req.body.username = decoded.username;
       next();
