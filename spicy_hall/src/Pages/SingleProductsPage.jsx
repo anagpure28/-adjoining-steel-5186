@@ -50,11 +50,11 @@ useEffect(() => {
   dispatch(getSingleProducts(id));
 }, []);
 
-// useEffect(() => {
-//   check(id);
-//   console.log("useEffect")
-//   dispatch(getSingleProducts(id));
-// }, [data.comment]);
+useEffect(() => {
+  check(id);
+  console.log("useEffect")
+  dispatch(getSingleProducts(id));
+}, [data.comment]);
 
 
 
