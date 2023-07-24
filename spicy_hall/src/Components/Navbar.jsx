@@ -138,7 +138,7 @@ const Navbar = () => {
                 <MenuDivider />
                 <Link to={"/profile"}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"88px"} color={"white"}>Profile</MenuItem></Link>
                 <MenuDivider />
-                <Link to={"/savedrecipes"}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"68px"} color={"white"}>Saved Recipes</MenuItem></Link>
+                <Link to={"/myrecipes"}><MenuItem bg={"gray.700"} fontSize={"1rem"} pl={"68px"} color={"white"}>Saved Recipes</MenuItem></Link>
               </MenuList>
             </Menu>
           </Flex>
