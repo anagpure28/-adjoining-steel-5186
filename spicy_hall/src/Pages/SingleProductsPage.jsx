@@ -20,7 +20,7 @@ const SingleProductsPage = () => {
   );
   //const [imageData, setImage] = React.useState(arrivalData.src1);
   const { id } = useParams();
-  // console.log(id, "params");
+ //console.log(id, "params");
   const dispatch = useDispatch();
 
 
@@ -37,7 +37,7 @@ const [saved, setSaved] = useState(false);
 
 const check = (id) => {
   existingData.forEach((el) => {
-    console.log(el._id, "and", id);
+   // console.log(el._id, "and", id);
     if (el._id === id) {
       setSaved(true);
     }
@@ -46,9 +46,15 @@ const check = (id) => {
 
 useEffect(() => {
   check(id);
+  console.log("useEffect")
   dispatch(getSingleProducts(id));
 }, []);
 
+// useEffect(() => {
+//   check(id);
+//   console.log("useEffect")
+//   dispatch(getSingleProducts(id));
+// }, [data.comment]);
 
 
 
@@ -65,7 +71,8 @@ useEffect(() => {
   };
   const handelCommentPost = () => {
     const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGJjY2YzNjdhMGRmNmFlNjBjN2M3YmEiLCJ1c2VybmFtZSI6InJvaGl0IiwiaWF0IjoxNjkwMDk2NDc4LCJleHAiOjE2OTA3MDEyNzh9.pmloPIvpOhJnFWU3V6BlA5gh_2f4MmcdLU2MJfcY8MM";
+(localStorage.getItem("token"));
+  console.log(token)
 
     // Add the token to the request headers
     const headers = {
@@ -76,6 +83,7 @@ useEffect(() => {
       .patch(`${Url}/comment/${id}`, commentData, { headers }) 
       .then((data) => {
         console.log(data, "response");
+        commentData([...commentData,change])
         setChange((pre) => !pre);
       })
       .catch((error) => {
@@ -93,7 +101,7 @@ useEffect(() => {
     //     });
   };
 
-  //console.log(commentData);
+ //console.log(commentData);
 
 
 
@@ -129,9 +137,12 @@ useEffect(() => {
   const handelSave =async () => {
     // const storedData =  localStorage.getItem("spicy_hall");
     // let existingData = storedData ? JSON.parse(storedData) : [];
+   console.log("calling save")
     const isProductDuplicate = existingData.some(
       (product) => product._id === data._id
     );
+
+    // console.log(product._id,data.id)
     if (!isProductDuplicate) {
       existingData.push(data);
       localStorage.setItem("spicy_hall", JSON.stringify(existingData));
@@ -172,7 +183,7 @@ useEffect(() => {
     ;
   };
 
-console.log(saved,"saved or not")
+// console.log(saved,"saved or not")
 
 
 

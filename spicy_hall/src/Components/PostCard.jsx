@@ -2,36 +2,40 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, Navigate, useParams } from 'react-router-dom';
 import axios from "axios";
-import { color,colorScheme, useToast } from '@chakra-ui/react'
-const PostCard = (data) => {
-  const { images, name, card,description,_id,comment ,like}=data
-  const storedData =  localStorage.getItem("spicy_hall");
-  let existingData = storedData ? JSON.parse(storedData) : []
-  const toast = useToast()
-  const Url = "https://spicy-hall.onrender.com/recipes";
-  // console.log(images);
+import { color,colorScheme, useToast } from '@chakra-ui/react';
+
+const PostCard = (Data) => {
+  const { images, name, card, description, _id, comment, like } = Data;
+  console.log(Data);
+
   const [saved, setSaved] = useState(false);
-const [liked,setLiked]=useState(false)
+  const [liked, setLiked] = useState(like.includes(_id));
+  const [Like,setLike]=useState(like.length)
+  const [data, setData] = useState({ ...Data });
+
+  const storedData = localStorage.getItem("spicy_hall");
+  let existingData = storedData ? JSON.parse(storedData) : [];
+
+  const toast = useToast();
+  const Url = "https://spicy-hall.onrender.com/recipes";
+
   const check = (id) => {
- 
     existingData.forEach((el) => {
       if (el._id === id) {
-        console.log(true,"trarwawgr")
+        console.log(true, "trarwawgr");
         setSaved(true);
       }
     });
   };
 
- 
   useEffect(() => {
     check(_id);
- 
-  }, []);
-  
+  }, [data,Like]);
+
   const handelSave = async () => {
     const isProductDuplicate = existingData.some((product) => product._id === _id);
-    const newData = { ...data }; // Create a copy of the data object
-  
+    const newData = { ...data };
+
     if (!isProductDuplicate) {
       existingData.push(newData);
       localStorage.setItem("spicy_hall", JSON.stringify(existingData));
@@ -58,74 +62,71 @@ const [liked,setLiked]=useState(false)
       });
     }
   };
-  
 
+  console.log(_id, Like);
 
+  ///Like Feature
+  const LikeAdd = (_id) => {
+    if(liked){
+      setLike((pre)=>pre-1)
+      setLiked(!liked);
+    }else{
+      setLike((pre)=>pre+1)
+      setLiked(!liked);
+    }
+   
+    console.log("inside liking fun");
+    const token = localStorage.getItem("token");
+    console.log(_id, "token", token);
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    axios
+      .patch(`${Url}/like/${_id}`, {}, { headers })
+      .then((response) => {
+        console.log("Like response:", response.data.updatedRecipe);
+        setData({ ...response.data.updatedRecipe });
 
-const LikeAdd=()=>{
+        
+      
+      })
+      .catch((error) => {
+        console.error("Error while liking:", error);
+      });
+  };
 
-  const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGJkODg3ODY0Mjc1NGYxZmZkNDUyNzUiLCJ1c2VybmFtZSI6InN1Y2hpIiwiaWF0IjoxNjkwMTQyODUxLCJleHAiOjE2OTA3NDc2NTF9.xf0axEFiauq7r1fb23qNdtXHaUvSlqQta_F8GZdG4fA";
-  console.log(_id,"token")
-
-
-// Add the token to the request headers
-const headers = {
-  Authorization: `Bearer ${token}`,
-   // Add the Content-Type header
+  if (comment) {
+    return (
+      <CardBox className="CardBox">
+        <div className="Cardimage">
+          <img src={images[1]} alt="" />
+        </div>
+        <div className="CardDetails">
+          <h1>{name}</h1>
+          <p>{description.substring(0, 100)} .... </p>
+          <div className="LikeSection">
+            <Link style={{ alignItems: "center" }} id="Link" to={`/recipes/${_id}`}>
+              Read More...
+            </Link>
+            <div id="loveCon" style={{ display: "flex", textAlign: "center", margin: "auto", justifyContent: "center", gap: "10px" }}>
+              <button onClick={() => LikeAdd(_id)}>
+                {liked ? <i style={{ color: "red" }} className="fa-solid fa-heart"></i> : <i style={{ color: "red" }} className="fa-regular fa-heart"></i>}
+              </button>
+              <h2 style={{ fontWeight: "800", margin: "auto" }}>{Like}</h2>
+            </div>
+            <div id="loveCon" style={{ display: "flex", textAlign: "center", margin: "auto" }}>
+              <button onClick={handelSave}>
+                <i id={saved ? "White" : "Black"} className="fa-regular fa-star"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </CardBox>
+    );
+  }
 };
 
-axios
-  .patch(`${Url}/like/${_id}`, { headers }) 
-  .then((data) => {
-    console.log(data, "response");
-    // setChange((pre) => !pre);
-  })
-  .catch((error) => {
-   // console.log(error);
-  });
-}
-console.log(like,"likes",_id)
-console.log(saved,"productys")
 
-
-
-
-  if(comment){
-  return (
-    <CardBox className="CardBox">
-      <div className="Cardimage">
-        <img src={images[1]} alt="" />
-      </div>
-      <div className="CardDetails">
-        <h1>{name}</h1>
-<p>{description.substring(0,100)} .... </p>
-<div className="LikeSection">
-<Link style={{alignItems: "center"}} id="Link" to={`/recipes/${_id}`}>Read More...</Link>
-  <div id="loveCon" style={{display:"flex",textAlign:"center",margin:"auto",justifyContent:"center",gap:"10px"}}>
-
-  
-
-<button onClick={LikeAdd}><i  class="fa-regular fa-heart"></i></button>
-<h2 style={{fontWeight:"800",margin:"auto"}}>
-  {like.length}
-</h2></div>
-<div id="loveCon" style={{display:"flex",textAlign:"center",margin:"auto"}}>
-
-
-
-<button onClick={handelSave}>
-  <i style={{color:saved?"white":"black"}} className="fa-solid fa-star"></i>
-</button>
-{/* <h2 style={{fontWeight:"800"}}>
-  {saved?"Saved":"Save"}
-</h2> */}
-</div>
-</div>
-      </div>
-    </CardBox>
-  );}
-};
 
 export default PostCard;
 
@@ -149,10 +150,13 @@ max-height: 80vh;
 #loveCon{
   align-items: center;
 }
-.white-star {
+#white {
   color: white;
+  background-color: white;
 }
-
+#Black{
+  color: black;
+}
   #saved{
     color: white;
 
