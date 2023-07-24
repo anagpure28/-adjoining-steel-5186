@@ -5,6 +5,7 @@ import "../Styles/AdminPage.css";
 import { url } from "../Url";
 import AdminProductCard from "./AdminProductCard";
 import { WarningTwoIcon } from "@chakra-ui/icons";
+import { Scrollbars } from 'react-custom-scrollbars';
 import { Box, Heading, SkeletonText, useToast } from "@chakra-ui/react";
 
 export const AdminPage = () => {
@@ -44,7 +45,7 @@ export const AdminPage = () => {
           .delete(`${url}/recipes/${id}`, {
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+               Authorization: `Bearer ${localStorage.getItem("AdminToken")}`,
             },
           })
           .then((res) => {
@@ -99,13 +100,15 @@ export const AdminPage = () => {
           })}
         </div>
       ) : data.length ? (
-        <div className="main">
+          <div className="main">
+          <Scrollbars>
           <div className="grid">
             {data.length > 0 &&
-              data.splice(0, 12).map((el, i) => {
+              data.splice(0,9).map((el, i) => {
                 return <AdminProductCard key={i} {...el} handleRemoveRecipe={handleRemoveRecipe} />;
               })}
           </div>
+          </Scrollbars>
           <Box>{/* <Pagination page={page} setPage={setPage} /> */}</Box>
         </div>
       ) : (
@@ -121,10 +124,10 @@ export const AdminPage = () => {
 };
 
 const DIV = styled.div`
-  width: 70%;
+  width: 80%;
   text-align: left;
   .main {
-    height: auto;
+    height: 750px;
     border-radius: 10px;
   }
   .grid {

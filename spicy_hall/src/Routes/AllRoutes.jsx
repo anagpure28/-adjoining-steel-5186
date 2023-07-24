@@ -13,6 +13,7 @@ import SavedPage from '../Pages/SavedPage'
 import ProfilePage from '../Pages/ProfilePage'
 import { AdminPage } from '../Admin/AdminPage'
 import { AdminDashboard } from '../Admin/AdminDashboard'
+import SideBar from '../Admin/SideBar'
 
 export const AllRoutes = () => {
   return (
@@ -33,7 +34,7 @@ export const AllRoutes = () => {
       {/* Admin */}
       <Route path='/adminlogin' element={<AdminLogin/>} />
       <Route path='/admin' element={<AdminPage/>} />
-      <Route path='/admindashboard' element={<AdminDashboard/>} />
+      <Route path='/admindashboard' element={<SideBar/>} />
     </Routes>
 
   )

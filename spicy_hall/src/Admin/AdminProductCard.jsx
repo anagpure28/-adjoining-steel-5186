@@ -104,6 +104,7 @@ function AdminProductCard({
             justifyContent={"space-between"}
             cursor="pointer"
             onClick={(e) => {
+                e.stopPropagation()
                 handleRemoveRecipe(_id);
               }}
           >

@@ -15,53 +15,40 @@ const AdminLogin = () => {
   const toast = useToast();
   const navigate = useNavigate();
 
-  const AdminEmail = "admin2023@gmail.com";
-  const AdminPassword = "Admin@2023";
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = { email, password };
     if (email && password) {
-      if (email === AdminEmail && password === AdminPassword) {
-        axios
-          .post(`${url}/users/login`, payload)
-          .then((res) => {
-            console.log(res);
-            if (res.status === 200) {
-              localStorage.setItem("AdminToken", res.data.token);
-              setTimeout(() => {
-                navigate("/admin");
-              }, 2000);
-            }
-            toast({
-              title: "Login Successfull!!",
-              description: res.data.msg,
-              status: res.data.status,
-              duration: 6000,
-              isClosable: true,
-              position: "top",
-              colorScheme: "green",
-            });
-          })
-          .catch((err) => {
-            console.log(err);
-            toast({
-              description: "Wrong Credentials",
-              status: "error",
-              duration: 6000,
-              isClosable: true,
-              position: "top",
-            });
+      axios
+        .post(`${url}/users/login`, payload)
+        .then((res) => {
+          console.log(res, "AdminLOGIN");
+          if (res.status === 200) {
+            localStorage.setItem("AdminToken", res.data.token);
+            setTimeout(() => {
+              navigate("/admindashboard");
+            }, 2000);
+          }
+          toast({
+            title: res.statusText,
+            description: res.data.msg,
+            status: res.data.status,
+            duration: 6000,
+            isClosable: true,
+            position: "top",
+            colorScheme: "green"
           });
-      } else {
-        toast({
-          description: "Admin Not Found!!",
-          status: "error",
-          duration: 6000,
-          isClosable: true,
-          position: "top",
+        })
+        .catch((err) => {
+          console.log(err)
+          toast({
+            description: "Wrong Credentials",
+            status: "error",
+            duration: 6000,
+            isClosable: true,
+            position: "top",
+          });
         });
-      }
     } else {
       toast({
         description: "Please fill all fields",
@@ -96,7 +83,8 @@ const AdminLogin = () => {
               autoComplete="off"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button className="hide"
+            <Button
+              className="hide"
               onClick={() => setShowPassword((showPassword) => !showPassword)}
             >
               {showPassword ? (
