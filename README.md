@@ -44,7 +44,9 @@ Spicy Hall is basically a place where all foodies can share and access popular r
    <img src="https://blog.logrocket.com/wp-content/uploads/2021/04/optimize-react-native-performance.png" width="100" height="100">
    
 <img src="https://tse1.mm.bing.net/th?id=OIP.VGkR7xeJBxG7Sd7GIJxmkQHaHa&pid=Api&rs=1&c=1&qlt=95&w=111&h=111">
-
+<img src="https://jquery-plugins.net/image/plugin/chakra-ui-simple-modular-accessible-ui-components-for-react-applications.png">
+<img src="">
+<img src="">
  </p>
 
 ## Functionalities associated with this website
