@@ -65,12 +65,14 @@ export const getProducts = (obj, page) => (dispatch) => {
 // };
 
 export const getSingleProducts = (id) => (dispatch) => {
+  console.log(id,"inside seinglefunction")
   dispatch({ type: IsLoading });
   axios
     .get( `${Url}/${id}`)
     .then((data) => {
+
       dispatch({ type: SINGLE_PRODUCT_REQUEST, payload: data.data });
-      // console.log(data.data)
+      console.log(data.data)
     })
     .catch((error) => {
       dispatch({ type: IsError });
