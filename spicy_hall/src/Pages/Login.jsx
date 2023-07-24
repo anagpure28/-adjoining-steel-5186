@@ -3,13 +3,15 @@ import "../Styles/Signup.css";
 import img4 from "../Images/Home/img4.jpg";
 import { Parallax } from "react-parallax";
 import { Link, useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 import {url} from "../Url"
 import axios from "axios";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
 
@@ -63,7 +65,7 @@ const Login = () => {
       <Parallax strength={400} bgImage={img4}>
         <div className="signup-main">
           <form className="form-login" onSubmit={handleSubmit}>
-            <p className="p1">Login</p>
+            <p className="p1">User Login</p>
             <hr />
             <br />
             <input
@@ -75,11 +77,21 @@ const Login = () => {
             <br />
             <br />
             <input
-              type="password"
-              value={password}
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
+            type={showPassword ? "text" : "password"}
+            value={password}
+            placeholder="Password"
+            autoComplete="off"
+            onChange={(e) => setPassword(e.target.value)}
             />
+            <Button className="hide"
+              onClick={() => setShowPassword((showPassword) => !showPassword)}
+            >
+              {showPassword ? (
+                <AiOutlineEye color="green" />
+              ) : (
+                <AiOutlineEyeInvisible color="gray" />
+              )}
+            </Button>
             <br />
             <br />
             <hr />

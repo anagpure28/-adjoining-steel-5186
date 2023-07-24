@@ -4,9 +4,11 @@ import img4 from "../Images/Home/img4.jpg";
 import { Parallax } from "react-parallax";
 import { Link } from "react-router-dom";
 import { url } from "../Url";
-import { useToast } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { BsEye, BsEyeSlash,  } from "react-icons/bs";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -14,8 +16,10 @@ const SignUp = () => {
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
-  const toast = useToast()
-  const navigate = useNavigate()
+  const [showPassword, setShowPassword] = useState(false);
+  const [hidePassword, setHidePassword] = useState(false);
+  const toast = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +56,7 @@ const SignUp = () => {
           });
         })
         .catch((err) => {
-          console.log(err)
+          console.log(err);
           toast({
             description: "Wrong Credentials",
             status: "error",
@@ -61,12 +65,7 @@ const SignUp = () => {
             position: "top",
           });
         });
-      setUsername("");
-      setEmail("");
-      setGender("");
-      setPassword("");
-      setConfPassword("")
-    }else {
+    } else {
       toast({
         description: "please fill all fields",
         status: "error",
@@ -108,20 +107,44 @@ const SignUp = () => {
             </select>
             <br />
             <br />
-            <input
-              type="password"
+            <input className="pass1"
+              type={showPassword ? "text" : "password"}
               value={password}
               placeholder="Password"
+              autoComplete="off"
               onChange={(e) => setPassword(e.target.value)}
             />
+            <Button className="hide1"
+              onClick={() => setShowPassword((showPassword) => !showPassword)}
+            >
+              {showPassword ? (
+                <IoEyeOutline color="green" />
+              ) : (
+                <IoEyeOffOutline color="gray" />
+              )}
+              </Button>
             <br />
             <br />
-            <input
-              type="password"
+            <input className="pass"
+              type={hidePassword ? "text" : "password"}
               value={confPassword}
               placeholder="Confirm Password"
+              autoComplete="off"
               onChange={(e) => setConfPassword(e.target.value)}
             />
+            <Button
+              className="hide1"
+              onClick={() => setHidePassword((hidePassword) => !hidePassword)}
+            >
+              {hidePassword ? (
+                <BsEye color="green" />
+              ) : (
+                <BsEyeSlash
+                  color="gray"
+                  backgroundColor="transparent"
+                />
+              )}
+            </Button>
             <br />
             <br />
             <hr />
