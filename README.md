@@ -1,9 +1,6 @@
 # -adjoining-steel-5186
 
 
-[![Screenshot-2023-05-13-145038.png](https://i.postimg.cc/gJWYdkM6/Screenshot-2023-05-13-145038.png)](https://postimg.cc/R3grL9xM)
-
-
 # ProjectName
 Spicy Hall
 [![Cw-Nem111-Logo.png](https://i.postimg.cc/yx7cPLwQ/Cw-Nem111-Logo.png)](https://postimg.cc/ygrD6y6c)
