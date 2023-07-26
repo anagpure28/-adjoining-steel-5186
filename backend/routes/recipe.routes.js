@@ -64,7 +64,8 @@ recipeRouter.get("/", async (req, res) => {
       .sort(sort)
       .skip(skip)
       .limit(pageSize);
-    res.status(200).json({ Messsage: "All Recipes", recipes });
+    const totalCount = await RecipeModel.countDocuments();
+    res.status(200).json({ Messsage: "All Recipes", recipes, totalCount });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -150,7 +151,8 @@ recipeRouter.get("/my-recipes", auth, async (req, res) => {
       .sort(sort)
       .skip(skip)
       .limit(pageSize);
-    res.status(200).json({ Messsage: "My Recipes", recipes });
+    const totalCount = await RecipeModel.countDocuments();
+    res.status(200).json({ Messsage: "My Recipes", recipes, totalCount });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
