@@ -15,7 +15,7 @@ Spicy Hall is basically a place where all foodies can share and access popular r
 ### Team Details
 1. Rohit Banerjee(Team Lead)
 2. Rushikesh Humbe
-3. Anuket Nagpure
+3. Aniket Nagpure
 
 
 
